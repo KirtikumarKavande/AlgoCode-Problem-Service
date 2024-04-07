@@ -12,9 +12,22 @@ class ProblemService {
     return problem;
   }
 
-  async getAllProblem(){
-    const allProblems=await this.problemRepository.getAllProblems()
-    return allProblems
+  async getAllProblem() {
+    const allProblems = await this.problemRepository.getAllProblems();
+    return allProblems;
+  }
+  async getProblemById(id) {
+    try {
+      
+    } catch (error) {
+      
+    }
+    const problem = await this.problemRepository.getProblemById(id);
+    return problem;
+
+
+
+    
   }
 }
 

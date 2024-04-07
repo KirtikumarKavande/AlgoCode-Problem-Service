@@ -26,13 +26,23 @@ async function addProblem(req, res) {
   }
 }
 
-function getProblem(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    message: "Not implemented",
-  });
+async function getProblem(req, res,next) {
+  try {
+    const id=req.params.id
+    const problem= await problemService.getProblemById(id)
+    return res.status(StatusCodes.OK).json({
+     success: true,
+     message: "successfully fetched problem",
+     error: {},
+     data: problem,
+   });
+  } catch (error) {
+    next(error)
+  }
+
 }
 
-async function getProblems(req, res) {
+async function getProblems(req, res,next) {
   try {
     const allProblems = await problemService.getAllProblem();
     return res.status(StatusCodes.OK).json({
@@ -42,7 +52,8 @@ async function getProblems(req, res) {
       data: allProblems,
     });
   } catch (error) {
-    console.log(error)
+    
+    // console.log(error)
     next(error);
     
   }
