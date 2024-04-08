@@ -25,6 +25,16 @@ class ProblemRepository {
 
     return problem;
   }
+
+  async deleteProblemById(id) {
+    const deleteProblem = await Problem.findByIdAndDelete(id);
+    console.log("delete",deleteProblem)
+    if (!deleteProblem) {
+      throw new NotFound("problem", id);
+    }
+    
+    return deleteProblem;
+  }
 }
 
 module.exports = ProblemRepository;

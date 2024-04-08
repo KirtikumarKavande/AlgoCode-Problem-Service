@@ -17,17 +17,14 @@ class ProblemService {
     return allProblems;
   }
   async getProblemById(id) {
-    try {
-      
-    } catch (error) {
-      
-    }
+  
     const problem = await this.problemRepository.getProblemById(id);
     return problem;
+  }
 
-
-
-    
+  async deleteProblemById(id){
+    const deletedProblem = await this.problemRepository.deleteProblemById(id);
+    return deletedProblem;
   }
 }
 

@@ -26,23 +26,22 @@ async function addProblem(req, res) {
   }
 }
 
-async function getProblem(req, res,next) {
+async function getProblem(req, res, next) {
   try {
-    const id=req.params.id
-    const problem= await problemService.getProblemById(id)
+    const id = req.params.id;
+    const problem = await problemService.getProblemById(id);
     return res.status(StatusCodes.OK).json({
-     success: true,
-     message: "successfully fetched problem",
-     error: {},
-     data: problem,
-   });
+      success: true,
+      message: "successfully fetched problem",
+      error: {},
+      data: problem,
+    });
   } catch (error) {
-    next(error)
+    next(error);
   }
-
 }
 
-async function getProblems(req, res,next) {
+async function getProblems(req, res, next) {
   try {
     const allProblems = await problemService.getAllProblem();
     return res.status(StatusCodes.OK).json({
@@ -52,17 +51,25 @@ async function getProblems(req, res,next) {
       data: allProblems,
     });
   } catch (error) {
-    
-    // console.log(error)
+    console.log(error)
     next(error);
-    
   }
 }
 
-function deleteProblem(req, res) {
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    message: "Not implemented",
-  });
+async function deleteProblem(req, res, next) {
+  try {
+    const id = req.params.id;
+    const deletedProblem =await problemService.deleteProblemById(id);
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "problem deleted successfully",
+      error:{},
+      data: deletedProblem,
+    });
+  } catch (error) {
+    console.log(error)
+    next(error);
+  }
 }
 
 function updateProblem(req, res) {
@@ -79,12 +86,3 @@ module.exports = {
   updateProblem,
   pingProblemController,
 };
-
-/**
- *
- * res
- *
- * res.status -> returns the same response object with status property set
- * .json -> return the same response object which has status set but this json to be returned is also set
- *
- */
