@@ -1,8 +1,10 @@
+const logger = require("../config/logger.config");
 const BaseError = require("../errors/base.error");
 const { StatusCodes } = require("http-status-codes");
 
 function errorHandler(err, req, res, next) {
-  console.log("logeed")
+  logger.error(err);
+  console.log("logeed");
   if (err instanceof BaseError) {
     return res.status(err.statusCode).json({
       success: false,
