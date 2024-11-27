@@ -7,6 +7,11 @@ class ProblemRepository {
       title: problemData.title,
       description: problemData.description,
       testCases: problemData.testCases ? problemData.testCases : [],
+      difficulty: problemData.difficulty,
+      article: problemData.article ? problemData.article : "",
+      solution: problemData.solution,
+      codeStub: problemData.codeStub
+
     });
     return problem;
   }

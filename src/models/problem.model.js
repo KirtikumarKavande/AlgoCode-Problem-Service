@@ -27,9 +27,16 @@ const problemSchema = new mongoose.Schema({
       },
     },
   ],
-  editorial: {
+  article: {
     type: String,
   },
+  solution: {
+    type: Object,
+  },
+  codeStub: {
+    type: String,
+  },
+
 });
 const Problem = mongoose.model("Problem", problemSchema);
 module.exports = Problem;

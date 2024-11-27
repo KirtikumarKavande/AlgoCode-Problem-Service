@@ -5,9 +5,9 @@ const { PORT } = require("./config/server.config");
 const apiRouter = require("./routes");
 const errorHandler = require("./utils/errorHandler");
 const connectToDB = require("./config/db.config");
-
+const cors =require('cors')
 const app = express();
-
+app.use(cors({origin:"http://localhost:8080"}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -19,6 +19,7 @@ app.get("/ping", (req, res) => {
   return res.json({ message: "Problem Service is alive" });
 });
 app.use(errorHandler);
+
 
 app.listen(PORT, async () => {
   console.log(`Server started at PORT: ${PORT}`);
