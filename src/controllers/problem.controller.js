@@ -12,7 +12,7 @@ function pingProblemController(req, res, next) {
   }
 }
 
-async function addProblem(req, res) {
+async function addProblem(req, res,next) {
   try {
     const newProblem = await problemService.createProblem(req.body);
     return res.status(StatusCodes.CREATED).json({

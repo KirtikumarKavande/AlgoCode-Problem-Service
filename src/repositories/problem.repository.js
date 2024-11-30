@@ -10,14 +10,14 @@ class ProblemRepository {
       difficulty: problemData.difficulty,
       article: problemData.article ? problemData.article : "",
       solution: problemData.solution,
-      codeStub: problemData.codeStub
+      initialCodeStub: problemData.initialCodeStub
 
     });
     return problem;
   }
 
   async getAllProblems() {
-    const problems = await Problem.find();
+    const problems = await Problem.find().select('-solution');;
     return problems;
   }
 

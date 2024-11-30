@@ -33,8 +33,8 @@ const problemSchema = new mongoose.Schema({
   solution: {
     type: Object,
   },
-  codeStub: {
-    type: String,
+  initialCodeStub: {
+    type: Object,
   },
 
 });

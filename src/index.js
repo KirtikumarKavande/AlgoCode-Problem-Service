@@ -7,7 +7,7 @@ const errorHandler = require("./utils/errorHandler");
 const connectToDB = require("./config/db.config");
 const cors =require('cors')
 const app = express();
-app.use(cors({origin:"http://localhost:8080"}))
+app.use(cors({origin:["http://localhost:8080","http://localhost:5173"]}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
