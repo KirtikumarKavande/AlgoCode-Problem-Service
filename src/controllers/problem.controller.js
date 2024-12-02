@@ -87,6 +87,22 @@ async function updateProblem(req, res,next) {
 
 }
 
+async function getSolutionOfProblem(req,res,next) {
+  try {
+
+    const solution = await problemService.getSolutionOfProblem(req.params.id);
+    return res.status(StatusCodes.OK).json({
+        success: true,
+        message: 'Successfully fetched the solution',
+        error: {},
+        data: solution
+    });
+} catch(error) {
+    next(error);
+}
+  
+}
+
 module.exports = {
   addProblem,
   getProblem,
@@ -94,4 +110,5 @@ module.exports = {
   deleteProblem,
   updateProblem,
   pingProblemController,
+  getSolutionOfProblem
 };

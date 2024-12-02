@@ -48,6 +48,17 @@ class ProblemRepository {
     }
     return updatedProblem;
   }
+
+
+  async getSolutionById(id) {
+    const solution = await Problem.findById(id).select('solution')
+    if (!solution) {
+      throw new NotFound("problem", id);
+    }
+
+    return solution;
+  }
+
 }
 
 module.exports = ProblemRepository;
