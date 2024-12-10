@@ -7,12 +7,17 @@ class ProblemRepository {
       title: problemData.title,
       description: problemData.description,
       testCases: problemData.testCases ? problemData.testCases : [],
+      difficulty: problemData.difficulty,
+      article: problemData.article ? problemData.article : "",
+      solution: problemData.solution,
+      initialCodeStub: problemData.initialCodeStub
+
     });
     return problem;
   }
 
   async getAllProblems() {
-    const problems = await Problem.find();
+    const problems = await Problem.find().select('-solution');;
     return problems;
   }
 
@@ -43,6 +48,17 @@ class ProblemRepository {
     }
     return updatedProblem;
   }
+
+
+  async getSolutionById(id) {
+    const solution = await Problem.findById(id).select('solution')
+    if (!solution) {
+      throw new NotFound("problem", id);
+    }
+
+    return solution;
+  }
+
 }
 
 module.exports = ProblemRepository;

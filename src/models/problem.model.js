@@ -11,9 +11,9 @@ const problemSchema = new mongoose.Schema({
   },
   difficulty: {
     type: String,
-    enum: ["easy", "medium", "hard"],
+    enum: ["Easy", "Medium", "Hard"],
     required: [true, "difficulty must be provided"],
-    default:"easy"
+    default:"Easy"
   },
   testCases: [
     {
@@ -27,9 +27,16 @@ const problemSchema = new mongoose.Schema({
       },
     },
   ],
-  editorial: {
+  article: {
     type: String,
   },
+  solution: {
+    type: Object,
+  },
+  initialCodeStub: {
+    type: Object,
+  },
+
 });
 const Problem = mongoose.model("Problem", problemSchema);
 module.exports = Problem;
