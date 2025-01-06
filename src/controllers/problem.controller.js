@@ -27,6 +27,7 @@ async function addProblem(req, res,next) {
 }
 
 async function getProblem(req, res, next) {
+  console.log("req is reached here")
   try {
     const id = req.params.id;
     const problem = await problemService.getProblemById(id);
